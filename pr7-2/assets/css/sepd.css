@@ -1,0 +1,240 @@
+/* ==========================================================================
+   1. КАРТА ПЕРЕМЕННЫХ И ДИЗАЙН-СИСТЕМА (DESIGN SYSTEM MAP)
+   ========================================================================== */
+:root {
+    /* Базовая палитра с отрегулированной прозрачностью */
+    --color-dark-abs: rgba(2, 1, 1, 0.9);         
+    --color-dark-pure: rgba(2, 1, 1, 0.8);        
+    --color-dark-mobile: rgba(2, 1, 1, 0.98);     
+    
+    --color-wine-deep: rgba(61, 11, 13, 0.85);    
+    --color-wine-medium: rgba(83, 8, 14, 0.4);    
+    --color-crimson-dark: rgba(114, 9, 15, 0.4);   
+    --color-ruby-glow: rgba(147, 5, 16, 0.6);     
+    --color-ruby-btn: rgba(147, 5, 16, 0.3);      
+    
+    --color-scarlet-solid: #b21f29;               
+    --color-scarlet-glow: rgba(178, 31, 41, 0.9);  
+    --color-scarlet-border: rgba(178, 31, 41, 0.5);
+    
+    --color-text-light: #ffffff;                  
+    --color-text-muted: rgba(243, 244, 246, 0.75);
+
+    /* Эффекты размытия и свечения */
+    --nav-blur: blur(16px) saturate(180%);
+    --nav-shadow: 0 8px 32px 0 rgba(2, 1, 1, 0.5);
+    --nav-inset-glow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* ==========================================================================
+   2. ГЛОБАЛЬНЫЕ СТИЛИ И СЕТКА FLEXBOX С ФОНОВОЙ КАРТИНКОЙ
+   ========================================================================== */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Наложение затемняющего слоя 75% поверх фонового изображения imet.jpg */
+    background: linear-gradient(
+        rgba(2, 1, 1, 0.192), 
+        rgba(2, 1, 1, 0.192)
+    ), 
+    url('../../imet.jpg') no-repeat center center fixed !important;
+    background-size: cover !important;
+    
+    color: #f3f4f6 !important;
+    font-family: system-ui, -apple-system, sans-serif;
+    display: flex;
+    flex-direction: column; /* Выстраивает шапку, контент и подвал вертикально */
+}
+
+/* Главный контейнер контента занимает всё свободное место на экране */
+main.main-centered {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 15px;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+
+.d-flex { display: flex !important; }
+.justify-content-between { justify-content: space-between !important; }
+.align-items-center { align-items: center !important; }
+.gap-2 { gap: 8px !important; }
+.gap-3 { gap: 16px !important; }
+
+/* ==========================================================================
+   3. ВЕРХНЯЯ ПАНЕЛЬ НАВИГАЦИИ (HEADER / NAVBAR)
+   ========================================================================== */
+.navbar-glass {
+    background: linear-gradient(180deg, var(--color-wine-deep) 0%, var(--color-dark-pure) 100%) !important;
+    backdrop-filter: var(--nav-blur);
+    -webkit-backdrop-filter: var(--nav-blur);
+    border-bottom: 1px solid var(--color-crimson-dark) !important;
+    box-shadow: var(--nav-shadow), var(--nav-inset-glow);
+    padding: 1rem 0;
+}
+
+/* Выравнивание ссылок меню в горизонтальную строку */
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    gap: 12px;
+}
+
+.navbar-glass .nav-link {
+    color: var(--color-text-muted) !important;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    display: block;
+    padding: 0.6rem 1.5rem !important;
+    border-radius: 50px;
+    transition: all 0.25s ease-in-out !important;
+}
+
+.navbar-glass .nav-link:hover {
+    color: var(--color-text-light) !important;
+    background: var(--color-wine-medium);
+}
+
+/* Активное состояние кнопки */
+.navbar-glass .nav-link.active-premium {
+    background: linear-gradient(135deg, rgba(61, 11, 13, 0.8) 0%, var(--color-ruby-btn) 100%) !important;
+    color: var(--color-text-light) !important;
+    border: 1px solid var(--color-scarlet-border) !important;
+    box-shadow: 0 4px 15px 0 rgba(147, 5, 16, 0.25);
+    font-weight: 600;
+}
+
+/* Логотип с неоновой подсветкой */
+.brand-glow {
+    color: var(--color-scarlet-solid) !important;
+    text-decoration: none;
+    text-shadow: 0 0 12px var(--color-ruby-glow);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   4. КАРТОЧКА ФОРМЫ РЕГИСТРАЦИИ И ПОЛЯ ВВОДА (INPUT)
+   ========================================================================== */
+.reg-card {
+    background: linear-gradient(135deg, rgba(61, 11, 13, 0.85) 0%, rgba(83, 8, 14, 0.7) 100%);
+    border: 1px solid rgba(114, 9, 15, 0.45) !important;
+    box-shadow: 0 12px 40px 0 rgba(2, 1, 1, 0.7);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    overflow: hidden;
+    backdrop-filter: var(--nav-blur);
+    -webkit-backdrop-filter: var(--nav-blur);
+}
+
+.reg-card-header {
+    background-color: rgba(147, 5, 16, 0.25) !important;
+    border-bottom: 1px solid rgba(114, 9, 15, 0.4) !important;
+    padding: 24px;
+    text-align: center;
+}
+
+.reg-card form { 
+    padding: 30px; 
+    display: flex;
+    flex-direction: column;
+}
+
+/* Группа разметки инпута и подписи под ним */
+.form-group-premium {
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+/* Стилизация текстовых полей ввода */
+.reg-card form input[type="text"],
+.reg-card form input[type="email"],
+.reg-card form input[type="password"] {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgba(2, 1, 1, 0.6) !important;
+    border: 1px solid rgba(114, 9, 15, 0.5) !important;
+    color: #ffffff !important;
+    padding: 14px 20px !important;
+    border-radius: 50px !important; /* Овальная форма */
+    font-size: 16px;
+    outline: none;
+    transition: all 0.25s ease-in-out !important;
+}
+
+/* Подсветка инпута при клике */
+.reg-card form input:focus {
+    border-color: var(--color-scarlet-solid) !important;
+    box-shadow: 0 0 14px rgba(178, 31, 41, 0.6) !important;
+    background-color: rgba(2, 1, 1, 0.8) !important;
+}
+
+/* Оформление меток подсказок */
+.form-group-premium label {
+    display: block;
+    font-size: 13px;
+    color: rgba(243, 244, 246, 0.5);
+    margin-top: 6px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+/* Главная кнопка отправки формы */
+.btn-reg-premium {
+    width: 100%;
+    background-color: rgba(178, 31, 41, 0.3) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(178, 31, 41, 0.6) !important;
+    padding: 14px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.2s ease;
+}
+
+.btn-reg-premium:hover {
+    background-color: rgba(178, 31, 41, 0.7) !important;
+    box-shadow: 0 0 14px rgba(178, 31, 41, 0.5);
+}
+
+/* Блокировка желтого фона автозаполнения браузеров Firefox и Chrome */
+.reg-card form input:-webkit-autofill,
+.reg-card form input:-webkit-autofill:hover, 
+.reg-card form input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-box-shadow: 0 0 0px 1000px #1a0405 inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* ==========================================================================
+   5. ФИКСАЦИЯ НИЖНЕЙ ПАНЕЛИ (FOOTER)
+   ========================================================================== */
+.footer-premium {
+    flex-shrink: 0; /* Не позволяет подвалу сжиматься */
+    background-color: #020101 !important;
+    border-top: 1px solid rgba(114, 9, 15, 0.4) !important;
+    padding: 20px 0;
+}
